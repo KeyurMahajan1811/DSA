@@ -111,6 +111,47 @@ class LinkedList {
     }
     return this.printList();
   }
+
+
+  // reverse(){
+  //    let current = Object.assign(this.head);
+  //     let prev = null;
+  //    while(current){
+  //     let next  = current.next;
+  //     current.next = prev;
+  //     prev=current;
+  //     current = next;
+  //    }
+  //    console.log(this.printList())
+  //    let currentNode = prev;
+  //   let array = [];
+  //   while(currentNode){
+  //       array.push(currentNode.value);
+  //       currentNode = currentNode.next;
+  //   }
+  //   return array;
+
+  // }
+
+  reverse(){
+    if(!this.head.next){
+      return this.printList();
+    }
+
+    let first  = this.head;
+    let second = this.head.next;
+    this.tail = this.head;
+    while(second){
+      const temp =  second.next;
+      second.next = first;
+      first = second;
+      second = temp;
+    }
+
+    this.head.next = second;
+    this.head = first;
+    return this.printList();
+  }
 }
 
 let myLinkedList = new LinkedList(10);
@@ -119,15 +160,16 @@ console.log(myLinkedList.append(16));
 console.log(myLinkedList.append(29));
 console.log(myLinkedList.insert(55,1));
 console.log(myLinkedList.insert(100,5));
-console.log(myLinkedList.remove(9));
+console.log(myLinkedList.reverse());
 
-console.log(myLinkedList.insert(-1,0));
 
-console.log(myLinkedList.remove(0));
-console.log(myLinkedList.getNode(0));
-console.log(myLinkedList.remove(2));
+console.log(myLinkedList.printList());
 
-console.log(myLinkedList.getNode(3));
-console.log(myLinkedList.append(101))
-console.log(myLinkedList.getNode(3))
-console.log(console.log(myLinkedList.prepend(2)));
+// console.log(myLinkedList.remove(0));
+// console.log(myLinkedList.getNode(0));
+// console.log(myLinkedList.remove(2));
+
+// console.log(myLinkedList.getNode(3));
+// console.log(myLinkedList.append(101))
+// console.log(myLinkedList.getNode(3))
+// console.log(console.log(myLinkedList.prepend(2)));
